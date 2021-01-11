@@ -70,7 +70,8 @@ def class_text_to_int(row_label):
 ```
 Run
 ```bash
-python generate_tfrecord.py
+python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=images/train --output_path=train.record
+python generate_tfrecord.py --csv_input=images/test_labels.csv --image_dir=images/test --output_path=test.record
 ```
 
 ### run_predictions.py
@@ -78,4 +79,19 @@ Place the images in the root directory together with the script
 Run
 ```bash
 python run_predictions.py
+```
+
+## Training model
+```bash
+python model_main.py --logtostderr --model_dir=training/ --pipeline_config_path=training/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/pipeline.config
+```
+
+## Opening Tensorboard
+```bash
+tensorboard --logdir=training
+```
+
+## Exporting inference graph
+```bash
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/pipeline.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph
 ```
