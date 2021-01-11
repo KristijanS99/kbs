@@ -100,4 +100,4 @@ python run_predictions.py
 ```
 
 ### Latest saved model download
-```https://www.dropbox.com/sh/e967fqb8myjdti1/AACYH6VxwZ4Vws1SNFQtPXzza?dl=0```
+[Dropbox download](https://www.dropbox.com/sh/e967fqb8myjdti1/AACYH6VxwZ4Vws1SNFQtPXzza?dl=0)
