@@ -7,7 +7,6 @@ This repository contains the Python code used in training an object recognition 
 First clone the master branch of the Tensorflow Models repository
 ```bash
 git clone https://github.com/tensorflow/models.git
-
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install dependencies.
@@ -74,24 +73,31 @@ python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=imag
 python generate_tfrecord.py --csv_input=images/test_labels.csv --image_dir=images/test --output_path=test.record
 ```
 
-### run_predictions.py
-Place the images in the root directory together with the script
-Run
-```bash
-python run_predictions.py
-```
-
 ## Training model
+From ``models/research/object_detection``
 ```bash
 python model_main.py --logtostderr --model_dir=training/ --pipeline_config_path=training/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/pipeline.config
 ```
 
 ## Opening Tensorboard
+From ``models/research/object_detection``
 ```bash
 tensorboard --logdir=training
 ```
 
 ## Exporting inference graph
+From ``models/research/object_detection``
 ```bash
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/pipeline.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph
 ```
+
+## Run_predictions.py
+Place the images (in .jpg format) in the ``/test`` directory
+Place the ``inference_graph`` directory in ``models/research/object_detection/``
+Run
+```bash
+python run_predictions.py
+```
+
+### Latest saved model download
+```https://www.dropbox.com/sh/e967fqb8myjdti1/AACYH6VxwZ4Vws1SNFQtPXzza?dl=0```

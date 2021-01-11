@@ -83,7 +83,7 @@ def run_inference_for_single_image(model, image):
     return output_dict
 
 
-for i, image_path in enumerate(glob.glob('*.jpg')):
+for i, image_path in enumerate(glob.glob('/test/*.jpg')):
     image_np = load_image_into_numpy_array(image_path)
     output_dict = run_inference_for_single_image(model, image_np)
     vis_util.visualize_boxes_and_labels_on_image_array(
